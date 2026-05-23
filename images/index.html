@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe and Grill The Peach</title>
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Changa One', sans-serif;
+            background: #fff7f0;
+            overflow-x: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .orb1 {
+            width: 300px;
+            height: 300px;
+            background: #ff8c42;
+            top: 10%;
+            left: 10%;
+        }
+
+        .orb2 {
+            width: 250px;
+            height: 250px;
+            background: #ffb26b;
+            bottom: 10%;
+            right: 10%;
+            animation-duration: 12s;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(120deg, rgba(255, 140, 66, 0.7), rgba(255, 180, 120, 0.5)),
+                url("images/hero.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-box {
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 90%;
+        }
+
+        .hero h1 {
+            font-size: 70px;
+            margin: 0;
+            word-break: break-word;
+        }
+
+        .hero p {
+            font-size: 22px;
+        }
+
+        section {
+            padding: 80px 10%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff8c42;
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .img-card img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #ff8c42, #ffb26b);
+            color: white;
+            text-align: center;
+            padding: 60px 10%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #111;
+            color: white;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 300px;
+            text-align: center;
+            animation: pop 0.3s ease;
+        }
+
+        .modal-content button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #ff8c42;
+            color: white;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            transform: scale(1.05);
+        }
+
+        /* ANIMATIONS */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-40px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes pop {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* 📱 MOBILE */
+        @media (max-width: 768px) {
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-box {
+                padding: 25px;
+            }
+
+            section {
+                padding: 50px 5%;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .card {
+                font-size: 18px;
+            }
+
+            .modal-content {
+                width: 85%;
+                padding: 20px;
+            }
+
+            .orb {
+                opacity: 0.2;
+                filter: blur(80px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-box">
+            <h1>Cafe and Grill The Peach</h1>
+            <p>Нежна атмосфера • Вкусна храна • Нова Загора</p>
+        </div>
+    </div>
+
+    <!-- INFO -->
+    <section>
+        <h2>За нас</h2>
+
+        <div class="card" onclick="showInfo('address')">📍 Адрес</div>
+        <div class="card" onclick="showInfo('rating')">⭐ Рейтинг</div>
+        <div class="card" onclick="showInfo('price')">💶 Цена</div>
+        <div class="card" onclick="showInfo('hours')">⏰ Работно време</div>
+    </section>
+
+    <!-- GALLERY -->
+    <section>
+        <h2>Галерия</h2>
+
+        <div class="card img-card">
+            <img src="images/hero.jpg">
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <div class="contact">
+        <h2>Свържете се с нас</h2>
+        <p>📍 Нова Загора</p>
+        <p>📞 088 811 9888</p>
+    </div>
+
+    <footer>
+        © 2026 Cafe and Grill The Peach
+    </footer>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modal-title"></h3>
+            <p id="modal-text"></p>
+            <button onclick="closeModal()">Затвори</button>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+        function showInfo(type) {
+            let title = "";
+            let text = "";
+
+            if (type === "address") {
+                title = "📍 Адрес";
+                text = "ул. „14-та Януари“ 69 — централна и лесна локация.";
+            }
+
+            if (type === "rating") {
+                title = "⭐ Рейтинг";
+                text = "4.5 / 5 — много хора го описват като уютно място.";
+            }
+
+            if (type === "price") {
+                title = "💶 Цена";
+                text = "5 – 20 € — достъпни цени за всеки джоб.";
+            }
+
+            if (type === "hours") {
+                title = "⏰ Работно време";
+                text = "Отворено до 22:00 — идеално за вечеря.";
+            }
+
+            document.getElementById("modal-title").innerText = title;
+            document.getElementById("modal-text").innerText = text;
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            let modal = document.getElementById("modal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
